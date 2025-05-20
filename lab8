@@ -1,0 +1,27 @@
+import math
+
+
+def f(x):
+    return x**3 - math.exp(4*x) - 5.5
+
+a = 2.6
+b = 3.0
+epsilon = 1e-5  
+
+
+if f(a) * f(b) >= 0:
+    print("Bu intervalda kök yoxdur və ya birdən çox kök var.")
+else:
+    iteration = 0
+    while (b - a)/2 > epsilon:
+        iteration += 1
+        m = (a + b) / 2
+        if abs(f(m)) < epsilon:
+            break
+        if f(a) * f(m) < 0:
+            b = m
+        else:
+            a = m
+    print(f"Təqribi kök: {m}")
+    print(f"f(m): {f(m)}")
+    print(f"İterasiya sayı: {iteration}")
